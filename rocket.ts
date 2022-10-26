@@ -9,7 +9,7 @@ export const init = () => {
     const time = journey.getTimeRequiredByDistance(parseInt(distanceInput))
     
     // Iterative approach
-    // const time = journey.getTimeRequiredByDistance(parseInt(distanceInput))
+    // const time = journey.normalSearch(parseInt(distanceInput))
     console.log(`${time} seconds is the time required to travel ${distanceInput} Km.`)
     console.timeEnd('Excution time')
 }
