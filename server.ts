@@ -7,7 +7,7 @@ app.use(express.static('out'));
 
 // define a route handler for docs home page
 app.get( "/", ( req: Request, res: Response ) => {
-    res.sendFile(path.join(__dirname, 'out/index.html'));
+    res.sendFile(path.join(__dirname, '../out/index.html'));
 } );
 
 // start the Express server

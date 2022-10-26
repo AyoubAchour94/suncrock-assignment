@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "docs": "jsdoc -r -c jsdoc.json",
-    "docs:serve": "node server"
+    "docs:serve": "node dist/server"
   },
   "author": "",
   "license": "ISC",
