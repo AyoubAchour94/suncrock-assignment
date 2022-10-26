@@ -108,8 +108,9 @@ export class Journey {
      */
     private getDistanceTraveledAtTime = (t: number): number => {
         // Sum(n) = F(n+2) - 1
-        return this.getNthFibBinet(t + 2) - 1; // Best approach in my opinion
-        // Another approach
+        
+        return this.getNthFibBinet(t + 2) - 1; // Final approach
+        // 2nd approach
         // return this.getNthFib(t + 2) - 1;
     };
     
@@ -152,6 +153,8 @@ export class Journey {
      * Searching the required time to travel d distance
      * by iterating over all possible fibonacci numbers
      * until we find our solution
+     * @method Journey#normalSearch
+     * @memberof Journey
      * @param {number} d - distance to travel 
      * @returns {number} - time required to travel d in seconds
      */

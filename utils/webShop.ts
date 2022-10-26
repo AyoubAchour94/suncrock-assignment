@@ -99,7 +99,7 @@ export class WebShop {
     /**
      * Recursive function that fetches the total 
      * number of products in the nested categories
-     * @method fetchTotal
+     * @method fetchTotalRecursive
      * @memberof WebShop
      * @param {Categorie} categorie - categorie 
      * @returns {number} - total number of products
