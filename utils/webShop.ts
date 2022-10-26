@@ -88,9 +88,9 @@ export class WebShop {
     public getTotalSync = () => {
         console.time(`Excution time Sync`)
         this.categories.forEach(cat => {
-            WebShop.fetchTotal(cat)
+            const total = WebShop.fetchTotal(cat)
             if(this.isSimulation) heavyLogicSimulation(12)
-            console.log(`${cat.id}: ${cat.products}`)
+            console.log(`${cat.id}: ${total}`)
         })
         console.timeEnd(`Excution time Sync`)
     }
@@ -104,8 +104,27 @@ export class WebShop {
      * @param {Categorie} categorie - categorie 
      * @returns {number} - total number of products
      */
-    static fetchTotal = (categorie: Category): number => {
+    static fetchTotalRecursive = (categorie: Category): number => {
         categorie.categories.forEach(cat => categorie.products += WebShop.fetchTotal(cat))
         return categorie.products 
+    }
+
+    /**
+     * Iterative function that fetches the total 
+     * number of products in the nested categories
+     * @method fetchTotal
+     * @memberof WebShop
+     * @param {Categorie} categorie - categorie 
+     * @returns {number} - total number of products
+     */
+    static fetchTotal = (categorie: Category): number => {
+        let total = categorie.products
+        const categoriesQueue = [...categorie.categories]
+        while(categoriesQueue.length > 0) {
+            const currCategory = categoriesQueue.pop()
+            total += currCategory?.products || 0
+            if(currCategory) categoriesQueue.push(...currCategory.categories)
+        }
+        return total 
     }
 }

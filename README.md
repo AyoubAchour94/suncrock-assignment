@@ -7,7 +7,7 @@
 
 > This code is used for an assignment for Sunrock.
 
-### ✨ [Demo](https://example.com)
+### ✨ [Demo](https://stackblitz.com/github/AyoubAchour94/suncrock-assignment)
 
 ## Approachs and thought process
 
@@ -42,7 +42,9 @@ So, I went and implemented this approach. This way the main thread will iterate 
 > I thought this is the final approach for while then I came back and thought about how I m allocating a worker for each category and how bad this can be where the workers number exceeds of logical cores in my CPU.
 * **Final Approach:**     
 At this point I just had to stick with the last approach but just try to limit the number of workers depending on the number of logical cores available at that time.   
-To achieve this I had to use a popular module that handles worker pools for nodeJS and it has a `maxThreads` option. According to documentation `The default is based on the number of available CPUs` which exactly what I need.
+To achieve this I had to use a popular module `piscina` that handles worker pools for nodeJS and it has a `maxThreads` option. According to documentation `The default is based on the number of available CPUs` which exactly what I need.
+> I have made one last change to the `fetchTotal` function since it is recursive and I don't know how big the catalog is, I didn't want to risk `recursive overhead` here too.
+PS: I have left the old implemetation in code under name `fetchTotalRecursive`.
 
 
 ## Install
