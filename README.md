@@ -28,7 +28,8 @@ Well this was a bit tricky I coudn't figure it out for a while but then checked 
 * **Final Approach:**   
 So at this point I m quite happy with result but just want to tweak the `getNthFib`. I went back to Wiki again and checked other formulas and found the `binet formula` to calculate `n-th fibonacci` `(F(n)= (φ^n - ψ^n)/SQRT(5))`.    
 So, I just implemeted that instead of doing the `recursive` work.
-Other than that, It is still pretty much the same approach.
+Other than that, It is still pretty much the same approach.   
+> **Edit:** Silly mistake I forgot to convert distance from Km to m. 
 
 ### Task2:
 * **1st Approach:**   
@@ -44,7 +45,8 @@ So, I went and implemented this approach. This way the main thread will iterate 
 At this point I just had to stick with the last approach but just try to limit the number of workers depending on the number of logical cores available at that time.   
 To achieve this I had to use a popular module `piscina` that handles worker pools for nodeJS and it has a `maxThreads` option. According to documentation `The default is based on the number of available CPUs` which exactly what I need.
 > I have made one last change to the `fetchTotal` function since it is recursive and I don't know how big the catalog is, I didn't want to risk `recursive overhead` here too.
-PS: I have left the old implemetation in code under name `fetchTotalRecursive`.
+PS: I have left the old implemetation in code under name `fetchTotalRecursive`.   
+**Edit**: I went back to to recursive function afterall as it was the solution we were looking for.
 
 
 ## Install

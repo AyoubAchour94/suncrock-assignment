@@ -6,10 +6,10 @@ export const init = () => {
     console.time('Excution time')
 
     // Binet's formula approach
-    const time = journey.getTimeRequiredByDistance(parseInt(distanceInput))
+    const time = journey.getTimeRequiredByDistance(parseInt(distanceInput) * 1000)
     
     // Iterative approach
-    // const time = journey.normalSearch(parseInt(distanceInput))
+    // const time = journey.normalSearch(parseInt(distanceInput) * 1000)
     console.log(`${time} seconds is the time required to travel ${distanceInput} Km.`)
     console.timeEnd('Excution time')
 }

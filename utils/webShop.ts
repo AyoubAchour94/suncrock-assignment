@@ -53,7 +53,6 @@ export class WebShop {
                     filename: path.resolve(__dirname, 'worker.js')
                 });
                 piscina.run(workerData).then((data: Category) => {
-                    console.log(`${data.id}: ${data.products}`)
                     resolve(data)
                     if(pending === 1) console.timeEnd(`Excution time Async`)
                     else pending--
@@ -88,9 +87,8 @@ export class WebShop {
     public getTotalSync = () => {
         console.time(`Excution time Sync`)
         this.categories.forEach(cat => {
-            const total = WebShop.fetchTotal(cat)
+            WebShop.fetchTotalRecursive(cat)
             if(this.isSimulation) heavyLogicSimulation(12)
-            console.log(`${cat.id}: ${total}`)
         })
         console.timeEnd(`Excution time Sync`)
     }
@@ -105,7 +103,8 @@ export class WebShop {
      * @returns {number} - total number of products
      */
     static fetchTotalRecursive = (categorie: Category): number => {
-        categorie.categories.forEach(cat => categorie.products += WebShop.fetchTotal(cat))
+        categorie.categories.forEach(cat => categorie.products += WebShop.fetchTotalRecursive(cat))
+        console.log(`${categorie.id}: ${categorie.products}`)
         return categorie.products 
     }
 

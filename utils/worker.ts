@@ -11,7 +11,7 @@ import { heavyLogicSimulation } from './'
  * @returns {Category} - updated category with total products
  */
 export default ({value, isSimulation}: WorkerData): Category => {
-    const total = WebShop.fetchTotal(value)
+    const total = WebShop.fetchTotalRecursive(value)
     if(isSimulation) heavyLogicSimulation(12)
     return { ...value, products: total }
 }
